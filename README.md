@@ -22,12 +22,17 @@ step 1 Firstly, install the plugin: `npm install --save-dev cypress-downloadfile
 
 visit cypress/support/command.js file and add this code: `require('cypress-downloadfile/lib/downloadFileCommand')`
 
-Visit cypress/plugins/index.js or cypress/support/e2e.js on v10 and this code :
+Visit cypress/plugins/index.js and add this code :
 
 const {downloadFile} = require('cypress-downloadfile/lib/addPlugin')
 module.exports = (on, config) => {
   on('task', {downloadFile})
 }
+
+or cypress/support/e2e.js on v10, do this:
+
+add `const {downloadFile} = require('cypress-downloadfile/lib/addPlugin')` to the very first line of cypress.config.js file
+then add `on('task', {downloadFile})`  inside the setupNodeEvents(), beneath the line with // implement node event listeners here
 
 ## File Download in action
 
