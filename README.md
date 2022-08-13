@@ -16,4 +16,22 @@ Note, if the file (image, document, mp3, any file) is already present inside the
 
 ALWAYS PUT THE FILE TO UPLOAD INSIDE THE FIXTURES FOLDER
 
-## File download
+## Setting up file download
+
+step 1 Firstly, install the plugin: `npm install --save-dev cypress-downloadfile`
+
+visit cypress/support/command.js file and add this code: `require('cypress-downloadfile/lib/downloadFileCommand')`
+
+Visit cypress/plugins/index.js or cypress/support/e2e.js on v10 and this code :
+
+const {downloadFile} = require('cypress-downloadfile/lib/addPlugin')
+module.exports = (on, config) => {
+  on('task', {downloadFile})
+}
+
+## File Download in action
+
+We need to add `/// <reference types="cypress-downloadfile"/>` to the top of the spec file where we want to perform file download for auto- completion for file download commands.
+
+syntax for file download
+cy.downloadFile('link_to_the_file', 'Name of folder we want to save the file in', 'Name we want to give the file.extension')

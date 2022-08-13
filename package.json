@@ -13,6 +13,7 @@
     "cypress": "^10.4.0"
   },
   "devDependencies": {
+    "cypress-downloadfile": "^1.2.2",
     "cypress-file-upload": "^5.0.8"
   }
 }
